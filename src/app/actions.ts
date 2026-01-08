@@ -198,3 +198,7 @@ export async function deleteShopAdminAction(slug: string) {
         return { success: false, error: e.message };
     }
 }
+
+export async function testConnectionAction() {
+    return await db.testConnection();
+}

@@ -193,5 +193,18 @@ export const db = {
         if (profileError) throw profileError;
 
         return { success: true };
+    },
+
+    /**
+     * Debug: Test Connection
+     */
+    testConnection: async () => {
+        try {
+            const { data, error } = await supabase.from('shops').select('count', { count: 'exact', head: true });
+            if (error) return { success: false, message: error.message, code: error.code, details: JSON.stringify(error) };
+            return { success: true, message: "Connected successfully" };
+        } catch (e: any) {
+            return { success: false, message: e.message, details: String(e) };
+        }
     }
 };

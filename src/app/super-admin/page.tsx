@@ -8,11 +8,16 @@ export default function SuperAdminPage() {
     const [shops, setShops] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
     const [deleting, setDeleting] = useState<string | null>(null);
+    const [connectionStatus, setConnectionStatus] = useState<any>(null);
 
     const loadData = async () => {
         setLoading(true);
-        const data = await getAdminDataAction();
+        const [data, conn] = await Promise.all([
+            getAdminDataAction(),
+            testConnectionAction() // Run the test
+        ]);
         setShops(data);
+        setConnectionStatus(conn);
         setLoading(false);
     };
 
@@ -57,6 +62,20 @@ export default function SuperAdminPage() {
                 </div>
 
                 {/* Table */}
+
+                {/* Connection Debugger */}
+                {connectionStatus && !connectionStatus.success && (
+                    <div className="bg-red-50 border border-red-200 text-red-800 p-4 mb-8 rounded">
+                        <h3 className="font-bold flex items-center gap-2"><ShieldAlert size={16} /> Database Connection Failed</h3>
+                        <p className="font-mono text-xs mt-2 bg-white p-2 border border-red-100 rounded">
+                            {connectionStatus.message}
+                            <br />
+                            {connectionStatus.details && <span className="text-gray-500">{connectionStatus.details}</span>}
+                        </p>
+                        <p className="text-sm mt-2">Check Vercel Environment Variables.</p>
+                    </div>
+                )}
+
                 <div className="bg-white border-2 border-concrete-900 shadow-[8px_8px_0px_#1f2937] overflow-hidden">
                     <table className="w-full text-left border-collapse">
                         <thead className="bg-concrete-900 text-white font-space uppercase text-sm">
