@@ -1,6 +1,6 @@
 "use server";
 
-import { mockDb } from "@/lib/mock-db";
+import { db } from "@/lib/db";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
  * Server Action: Check Slug Availability
  */
 export async function checkSlugAction(slug: string) {
-    return await mockDb.checkSlug(slug);
+    return await db.checkSlug(slug);
 }
 
 /**
@@ -20,7 +20,7 @@ export async function createShopAction(data: {
     craft: string;
     vibe: string;
 }) {
-    await mockDb.createShop(data);
+    await db.createShop(data);
 
     // Revalidate paths just in case to clear cache
     revalidatePath(`/shop/${data.slug}`);
@@ -42,7 +42,7 @@ export async function addServiceAction(slug: string, data: {
     try {
         if (!slug) throw new Error("Missing Shop Slug");
 
-        await mockDb.addService({
+        await db.addService({
             shop_slug: slug,
             ...data
         });
@@ -60,22 +60,22 @@ export async function addServiceAction(slug: string, data: {
  * Server Action: Get Services (for client components)
  */
 export async function getServicesAction(slug: string) {
-    return await mockDb.getServices(slug);
+    return await db.getServices(slug);
 }
 
 /**
  * Server Action: Get Services (for client components)
  */
 export async function getShopAction(slug: string) {
-    return await mockDb.getShop(slug);
+    return await db.getShop(slug);
 }
 
 export async function updateChecklistAction(slug: string, updates: { goal_set?: string; flag_planted?: string }) {
-    return await mockDb.updateChecklist(slug, updates);
+    return await db.updateChecklist(slug, updates);
 }
 
 export async function resetShopAction(slug: string) {
-    await mockDb.resetShop(slug);
+    await db.resetShop(slug);
     revalidatePath(`/admin`);
 }
 
@@ -169,17 +169,17 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
 }
 
 export async function incrementEngagementAction(username: string) {
-    await mockDb.bumpEngagement(username, 5); // Award 5 points
+    await db.bumpEngagement(username, 5); // Award 5 points
     revalidatePath('/founders-circle');
     return { success: true };
 }
 
 export async function getPlatformUpdatesAction() {
-    return await mockDb.getPlatformUpdates();
+    return await db.getPlatformUpdates();
 }
 
 export async function addPlatformUpdateAction(data: { title: string; content: string }) {
-    await mockDb.addPlatformUpdate(data);
+    await db.addPlatformUpdate(data);
     revalidatePath('/founders-circle');
     return { success: true };
 }
