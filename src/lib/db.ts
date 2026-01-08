@@ -106,7 +106,7 @@ export const db = {
     /**
      * Add Service
      */
-    addService: async (serviceData: Omit<Service, 'id'>) => {
+    addService: async function (serviceData: Omit<Service, 'id'>) {
         const { data, error } = await supabase
             .from('services')
             .insert(serviceData)
