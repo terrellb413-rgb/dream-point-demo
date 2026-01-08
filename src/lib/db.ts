@@ -114,6 +114,10 @@ export const db = {
             .single();
 
         if (error) throw new Error(error.message);
+
+        // NEW: Automatically mark "services_stocked" as true in the checklist
+        await this.updateChecklist(serviceData.shop_slug, { services_stocked: true });
+
         return data;
     },
 
