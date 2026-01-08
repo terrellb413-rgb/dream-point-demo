@@ -42,7 +42,7 @@ export default function OfficeLobbyPage() {
                             <input
                                 type="text"
                                 value={slug}
-                                onChange={(e) => setSlug(e.target.value)}
+                                onChange={(e) => setSlug(e.target.value.toLowerCase())}
                                 placeholder="demo"
                                 className="w-full pl-[135px] p-3 border border-concrete-900 font-bold outline-none focus:bg-blue-50 transition-colors"
                                 autoFocus

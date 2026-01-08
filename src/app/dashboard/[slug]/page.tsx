@@ -54,16 +54,12 @@ export default function LeasingOfficePage({
                 console.log(`[Dashboard] Hydrating checklist:`, data.shop.checklist);
                 setChecklist(data.shop.checklist);
 
-                // NEW: Auto-redirect if checklist is complete
                 const complete = data.shop.checklist.services_stocked &&
                     data.shop.checklist.goal_set &&
                     data.shop.checklist.flag_planted;
 
-                if (complete) {
-                    console.log(`[Dashboard] Checklist complete! Redirecting to Founders Circle Hub...`);
-                    window.location.href = "/founders-circle";
-                    return;
-                }
+                // Auto-redirect removed per user request (Step 517)
+                // Users now click "Enter" manually.
 
                 // Pre-fill inputs if existing
                 if (data.shop.checklist.goal_set) setGoalInput(data.shop.checklist.goal_set);
