@@ -182,10 +182,10 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
             };
         }
 
-        // 3. General Fallback - SHOW THE ERROR so we can fix it
+        // 3. General Fallback (Clean UX, no scary JSON errors)
         return {
             role: 'assistant',
-            content: `⚠️ **Error Details:** ${errorMessage}\n\n(Please tell me exactly what this says!)`
+            content: "✨ The Dream Layer is busy (High Traffic). Please try again in 30 seconds!"
         };
     }
 }
