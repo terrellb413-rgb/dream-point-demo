@@ -145,7 +145,7 @@ export const db = {
     /**
      * Platform Updates (Founders Circle)
      */
-    getPlatformUpdates: async () => {
+    getPlatformUpdates: async (): Promise<PlatformUpdate[]> => {
         // Implementation for updates if table exists
         return [];
     },
