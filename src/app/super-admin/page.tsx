@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Trash2, ExternalLink, ShieldAlert, RefreshCw } from "lucide-react";
-import { getAdminDataAction, deleteShopAdminAction } from "@/app/actions";
+import { getAdminDataAction, deleteShopAdminAction, testConnectionAction } from "@/app/actions";
 
 export default function SuperAdminPage() {
     const [shops, setShops] = useState<any[]>([]);
