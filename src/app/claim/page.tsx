@@ -86,7 +86,7 @@ export default function ClaimPage() {
                     <div className="h-6 mt-2 text-sm font-bold text-center">
                         {status === "taken" && (
                             <span className="text-brick">
-                                Taken. <a href="/office" className="underline hover:text-black">Is this you? Enter Office.</a>
+                                Taken. <a href="/office" className="underline hover:text-black">Already secured? Enter Office.</a>
                             </span>
                         )}
                         {status === "available" && <span className="text-blueprint">This plot is available.</span>}

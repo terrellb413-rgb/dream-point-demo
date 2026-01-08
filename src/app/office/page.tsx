@@ -3,18 +3,44 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowRight, Lock } from "lucide-react";
+import { getShopAction } from "@/app/actions";
 
 export default function OfficeLobbyPage() {
     const router = useRouter();
     const [slug, setSlug] = useState("");
     const [loading, setLoading] = useState(false);
 
-    const handleEnter = (e: React.FormEvent) => {
+    const handleEnter = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!slug) return;
         setLoading(true);
-        // In a real app, we'd verify auth here. For MVP, we just route them.
-        router.push(`/dashboard/${slug}`);
+
+        try {
+            // Check status for smart redirect
+            // Assuming we import getShopAction. If not imported, we need to add import.
+            // I will use dynamic import or assume it's available? 
+            // Better to add import in next step or use clean replace.
+            // For now, let's just do the logic assuming import is there (I will add it).
+            const { getShopAction } = await import("@/app/actions");
+
+            const data = await getShopAction(slug);
+
+            if (data?.shop?.checklist) {
+                const complete = data.shop.checklist.services_stocked &&
+                    data.shop.checklist.goal_set &&
+                    data.shop.checklist.flag_planted;
+
+                if (complete) {
+                    router.push('/founders-circle');
+                    return;
+                }
+            }
+
+            router.push(`/dashboard/${slug}`);
+        } catch (e) {
+            // Fallback
+            router.push(`/dashboard/${slug}`);
+        }
     };
 
     return (
