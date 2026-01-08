@@ -1,0 +1,104 @@
+{
+  "profiles": [
+    {
+      "id": "symrig",
+      "username": "4",
+      "full_name": "4",
+      "craft": "Tattoo Artist",
+      "vibe": "Minimal",
+      "engagement_score": 0,
+      "created_at": "2025-12-18T03:27:26.723Z"
+    },
+    {
+      "id": "hy6p70i",
+      "username": "demo2",
+      "full_name": "demo 2",
+      "craft": "Tattoo Artist",
+      "vibe": "Realism",
+      "engagement_score": 0,
+      "created_at": "2026-01-06T22:54:20.310Z"
+    },
+    {
+      "id": "74c2o5",
+      "username": "demo4",
+      "full_name": "demo drown",
+      "craft": "Tattoo Artist",
+      "vibe": "Traditional",
+      "engagement_score": 0,
+      "created_at": "2026-01-07T01:07:37.236Z"
+    }
+  ],
+  "shops": [
+    {
+      "id": "shop_symrig",
+      "owner_id": "symrig",
+      "slug": "4",
+      "status": "founder",
+      "checklist": {
+        "services_stocked": true,
+        "goal_set": "gfjdx",
+        "flag_planted": "sfjd"
+      },
+      "created_at": "2025-12-18T03:27:26.723Z"
+    },
+    {
+      "id": "shop_hy6p70i",
+      "owner_id": "hy6p70i",
+      "slug": "demo2",
+      "status": "founder",
+      "checklist": {
+        "services_stocked": true,
+        "goal_set": "run my own business",
+        "flag_planted": "ajkebkhbzjksr"
+      },
+      "created_at": "2026-01-06T22:54:20.310Z"
+    },
+    {
+      "id": "shop_74c2o5",
+      "owner_id": "74c2o5",
+      "slug": "demo4",
+      "status": "founder",
+      "checklist": {
+        "services_stocked": true,
+        "goal_set": "hgcnkhg",
+        "flag_planted": "hkgchgc"
+      },
+      "created_at": "2026-01-07T01:07:37.236Z"
+    }
+  ],
+  "services": [
+    {
+      "shop_slug": "4",
+      "title": "j",
+      "price": 2,
+      "duration_mins": 30,
+      "id": "m77z3"
+    },
+    {
+      "shop_slug": "demo2",
+      "title": "hgvhg",
+      "price": 2,
+      "duration_mins": 30,
+      "description": "w56jyjh56u w65",
+      "available_days": [
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri"
+      ],
+      "id": "74kx6"
+    },
+    {
+      "shop_slug": "demo4",
+      "title": "hg",
+      "price": 4,
+      "duration_mins": 30,
+      "description": "ugjvkhgckv",
+      "available_days": [
+        "Tue"
+      ],
+      "id": "qi5qqf"
+    }
+  ]
+}

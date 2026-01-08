@@ -1,26 +1,42 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* BUSINESS LAYER (Structure) */
+  --color-concrete-100: #f3f4f6;
+  --color-concrete-900: #1f2937;
+  --color-blueprint: #2563eb;
+  --color-brick: #b91c1c;
+  --color-steel: #9ca3af;
+
+  /* DREAM LAYER (Atmosphere) */
+  --color-dream-sky: #bae6fd;
+  /* Soft Optimism */
+  --color-dream-pink: #fbcfe8;
+  /* Warm Highlight */
+  --color-dream-lavender: #e9d5ff;
+  /* Ambient Glow */
+  --color-dream-cloud: #f0f9ff;
+  /* Base Atmosphere */
+
+  /* Fonts */
+  --font-space: var(--font-space);
+  --font-work: var(--font-work);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
+/* GLOBAL ATMOSPHERE */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  /* Sky (Top) -> Lavender/Pink (Bottom) */
+  background: linear-gradient(to bottom, var(--color-dream-sky) 0%, var(--color-dream-pink) 100%);
+  min-height: 100vh;
+  color: var(--color-concrete-900);
+}
+
+/* UTILITY: Bloom Effects */
+.dream-bloom {
+  box-shadow: 0 0 40px -10px var(--color-dream-lavender);
+}
+
+::selection {
+  background-color: var(--color-dream-pink);
+  color: var(--color-concrete-900);
 }

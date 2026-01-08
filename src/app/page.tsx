@@ -1,65 +1,64 @@
-import Image from "next/image";
+import { Sparkles, ArrowRight, Lock, MapPin } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-sans relative overflow-hidden">
+
+      {/* DREAM LAYER: Atmosphere */}
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-dream-sky opacity-20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-dream-pink opacity-20 blur-[100px] rounded-full pointer-events-none" />
+
+      {/* BUSINESS LAYER: Content */}
+      <main className="flex flex-col gap-10 row-start-2 items-center text-center relative z-10">
+
+        <div className="flex flex-col items-center gap-4">
+          <div className="bg-concrete-900 text-white px-3 py-1 font-bold text-[10px] uppercase tracking-widest mb-2 border border-white shadow-md flex items-center gap-2">
+            <MapPin size={10} className="text-blueprint" /> Street 01: Now Leasing
+          </div>
+          <a href="/vision" className="group inline-flex items-center gap-2 mb-4 bg-white/50 backdrop-blur-sm px-4 py-1.5 rounded-full border border-concrete-200 hover:border-blueprint transition-all">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900">What is DreamPoint?</span>
+            <div className="w-1.5 h-1.5 bg-blueprint rounded-full animate-pulse" />
+          </a>
+          <h1 className="text-5xl sm:text-7xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900 max-w-2xl">
+            Build Your <br /> <span className="bg-blueprint text-white px-4">Dream Shop.</span>
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+          <p className="max-w-md text-concrete-900/70 text-lg font-work mt-4 leading-tight">
+            Stop sending clients to profile links. Start building a digital destination that reflects your craft.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+
+        <div className="flex flex-col items-center gap-6 w-full max-w-sm">
+          {/* THE MAIN ATTRACTION: AI COACH */}
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/coach"
+            className="w-full bg-concrete-900 text-white border-2 border-concrete-900 px-8 py-6 font-space uppercase font-bold text-2xl shadow-[8px_8px_0px_#2563eb] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-3 group"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
+            <Sparkles className="text-yellow-400 animate-pulse group-hover:scale-125 transition-transform" />
+            Talk to the Coach
           </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+
+          <div className="flex flex-col sm:flex-row gap-8 mt-4">
+            <a
+              href="/claim"
+              className="text-xs font-bold uppercase tracking-widest text-concrete-900 border-b-2 border-concrete-900 hover:text-blueprint hover:border-blueprint transition-all pb-1 flex items-center gap-2"
+            >
+              Reserve My Spot <ArrowRight size={14} />
+            </a>
+            <a
+              href="/office"
+              className="text-xs font-bold uppercase tracking-widest text-concrete-900/50 hover:text-concrete-900 transition-all flex items-center gap-2"
+            >
+              <Lock size={12} /> Enter Office
+            </a>
+          </div>
         </div>
+
       </main>
+
+      <footer className="row-start-3 flex flex-col gap-2 items-center justify-center font-work text-concrete-900/30 text-[10px] uppercase tracking-[0.2em] relative z-10">
+        <span>DreamPoint Founders Circle</span>
+        <div className="w-12 h-[1px] bg-concrete-200" />
+      </footer>
     </div>
   );
 }
