@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { Service, Profile } from "@/lib/types";
-import { addServiceAction, getServicesAction, getShopAction } from "@/app/actions";
+import { addServiceAction, getServicesAction, getShopAction, deleteServiceAction } from "@/app/actions";
 import { Plus, Trash2, Clock, DollarSign, Sparkles, Calendar } from "lucide-react";
 import { getSuggestedServices, SuggestedService } from "@/lib/suggested-services";
 import { clsx } from "clsx";
@@ -101,6 +101,23 @@ export default function ServicesPage({
         }
     };
 
+    const handleDelete = async (id: string, title: string) => {
+        if (!confirm(`Are you sure you want to remove "${title}"?`)) return;
+
+        try {
+            const res = await deleteServiceAction(id, slug);
+            if (res.success) {
+                // Optimistic UI update or wait for reload
+                await loadServices(slug);
+            } else {
+                alert("Failed to delete service.");
+            }
+        } catch (e) {
+            console.error(e);
+            alert("Error deleting service.");
+        }
+    };
+
     return (
         <div className="min-h-screen bg-transparent p-4 md:p-8 font-work relative overflow-hidden">
 
@@ -152,7 +169,11 @@ export default function ServicesPage({
                                             <span className="flex items-center gap-1"><Clock size={14} /> {svc.duration_mins}m</span>
                                         </div>
                                     </div>
-                                    <button className="text-gray-300 hover:text-brick transition-colors">
+                                    <button
+                                        onClick={() => handleDelete(svc.id, svc.title)}
+                                        className="text-gray-300 hover:text-brick transition-colors"
+                                        title="Remove Service"
+                                    >
                                         <Trash2 size={18} />
                                     </button>
                                 </div>

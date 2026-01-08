@@ -147,6 +147,19 @@ export const db = {
     },
 
     /**
+     * Delete Service
+     */
+    deleteService: async (id: string) => {
+        const { error } = await supabase
+            .from('services')
+            .delete()
+            .eq('id', id);
+
+        if (error) throw new Error(error.message);
+        return { success: true };
+    },
+
+    /**
      * Platform Updates (Founders Circle)
      */
     getPlatformUpdates: async (): Promise<PlatformUpdate[]> => {

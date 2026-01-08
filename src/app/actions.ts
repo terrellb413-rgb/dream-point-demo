@@ -57,6 +57,20 @@ export async function addServiceAction(slug: string, data: {
 }
 
 /**
+ * Server Action: Delete Service
+ */
+export async function deleteServiceAction(id: string, slug: string) {
+    try {
+        await db.deleteService(id);
+        revalidatePath(`/dashboard/${slug}/services`);
+        revalidatePath(`/shop/${slug}`);
+        return { success: true };
+    } catch (e) {
+        return { success: false, error: String(e) };
+    }
+}
+
+/**
  * Server Action: Get Services (for client components)
  */
 export async function getServicesAction(slug: string) {
