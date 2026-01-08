@@ -199,12 +199,44 @@ export const db = {
      * Debug: Test Connection
      */
     testConnection: async () => {
+        const diagnostics: any = {
+            env_url_status: "missing",
+            env_key_status: "missing",
+            error: null
+        };
+
         try {
+            const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+            const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+
+            // 1. Diagnose Headers
+            if (url) {
+                diagnostics.env_url_status = `Present (Length: ${url.length})`;
+                if (!url.startsWith('https://')) diagnostics.env_url_warning = "Does not start with https://";
+                if (url.includes('"') || url.includes("'")) diagnostics.env_url_warning = "Contains quotes (please remove them in Vercel)";
+            }
+            if (key) {
+                diagnostics.env_key_status = `Present (Length: ${key.length})`;
+                if (key.includes('"') || key.includes("'")) diagnostics.env_key_warning = "Contains quotes (please remove them in Vercel)";
+            }
+
+            // 2. Test Request
             const { data, error } = await supabase.from('shops').select('count', { count: 'exact', head: true });
-            if (error) return { success: false, message: error.message, code: error.code, details: JSON.stringify(error) };
-            return { success: true, message: "Connected successfully" };
+
+            if (error) {
+                diagnostics.error = error;
+                return {
+                    success: false,
+                    message: "Database Request Failed",
+                    details: JSON.stringify(diagnostics, null, 2)
+                };
+            }
+
+            return { success: true, message: "Connected successfully", details: JSON.stringify(diagnostics, null, 2) };
+
         } catch (e: any) {
-            return { success: false, message: e.message, details: String(e) };
+            diagnostics.error_thrown = e.message || String(e);
+            return { success: false, message: "Client Initialization Error", details: JSON.stringify(diagnostics, null, 2) };
         }
     }
 };
