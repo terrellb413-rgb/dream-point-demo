@@ -182,10 +182,10 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
             };
         }
 
-        // 3. General Fallback (Clean UX, no scary JSON errors)
+        // 3. General Fallback - SHOW THE ERROR so we can fix it
         return {
             role: 'assistant',
-            content: "✨ The Dream Layer is fuzzy right now. Please try again in a moment!"
+            content: `⚠️ **Error Details:** ${errorMessage}\n\n(Please tell me exactly what this says!)`
         };
     }
 }
