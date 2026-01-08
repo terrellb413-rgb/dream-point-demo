@@ -18,9 +18,8 @@ export default function QuickNavBar() {
         { num: 9, label: "Admin", href: "/super-admin" },
     ];
 
-    if (process.env.NODE_ENV === 'production' && !pathname.includes('super-admin')) {
-        // Optional: Hide in production if desired, but user asked for "local project". 
-        // For now I'll leave it visible so they can see it live too if they want.
+    if (process.env.NODE_ENV === 'production') {
+        return null;
     }
 
     return (
