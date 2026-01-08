@@ -28,11 +28,23 @@ export default function LeasingOfficePage({
             console.log(`[Dashboard] Loading for slug: ${p.slug}`);
             setSlug(p.slug);
             // Fetch initial data to hydrate state
-            const data = await getShopAction(p.slug);
-            console.log(`[Dashboard] getShopAction result:`, data);
+            // Retry logic for fetching shop data
+            let attempts = 0;
+            let data = null;
+
+            while (attempts < 3) {
+                data = await getShopAction(p.slug);
+                if (data && data.shop) break; // Found it!
+
+                console.log(`[Dashboard] Shop not found, retrying... (${attempts + 1}/3)`);
+                await new Promise(r => setTimeout(r, 1500)); // Wait 1.5s
+                attempts++;
+            }
+
+            console.log(`[Dashboard] Final getShopAction result:`, data);
 
             if (!data || !data.shop) {
-                console.warn(`[Dashboard] Shop not found! Redirecting to claim...`);
+                console.warn(`[Dashboard] Shop not found after retries! Redirecting to claim...`);
                 // Shop doesn't exist (Zombie state or invalid URL)
                 window.location.href = "/claim";
                 return;

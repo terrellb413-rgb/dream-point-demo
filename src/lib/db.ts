@@ -160,8 +160,38 @@ export const db = {
     },
 
     resetShop: async (slug: string) => {
-        // Admin only - delete
+        // Admin only - delete by slug
         await supabase.from('shops').delete().eq('slug', slug);
         await supabase.from('profiles').delete().eq('username', slug);
+    },
+
+    /**
+     * Admin: Get All Shops
+     */
+    getAllShops: async () => {
+        const { data } = await supabase
+            .from('shops')
+            .select(`
+                *,
+                profile:profiles(*)
+            `)
+            .order('created_at', { ascending: false });
+
+        return data || [];
+    },
+
+    /**
+     * Admin: Delete Shop
+     */
+    deleteShop: async (slug: string) => {
+        // Cascading deletion handled by Supabase foreign keys if set, 
+        // but we'll be explicit just in case.
+        const { error } = await supabase.from('shops').delete().eq('slug', slug);
+        if (error) throw error;
+
+        const { error: profileError } = await supabase.from('profiles').delete().eq('username', slug);
+        if (profileError) throw profileError;
+
+        return { success: true };
     }
 };

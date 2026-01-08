@@ -183,3 +183,18 @@ export async function addPlatformUpdateAction(data: { title: string; content: st
     revalidatePath('/founders-circle');
     return { success: true };
 }
+
+export async function getAdminDataAction() {
+    return await db.getAllShops();
+}
+
+export async function deleteShopAdminAction(slug: string) {
+    if (!slug) return { success: false, error: "Missing slug" };
+    try {
+        await db.deleteShop(slug);
+        revalidatePath('/super-admin');
+        return { success: true };
+    } catch (e: any) {
+        return { success: false, error: e.message };
+    }
+}
