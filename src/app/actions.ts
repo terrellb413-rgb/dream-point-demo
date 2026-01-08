@@ -116,24 +116,32 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
         const apiKey = process.env.OPENROUTER_API_KEY;
         if (!apiKey) throw new Error("OPENROUTER_API_KEY is not configured.");
 
-        const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${apiKey}`,
-                'Content-Type': 'application/json',
-                'HTTP-Referer': 'https://dreampoint.com',
-                'X-Title': 'Dreampoint AI Beauty Coach'
-            },
-            body: JSON.stringify({
-                model: "google/gemini-2.0-flash-exp:free",
-                messages: [
-                    { role: "system", content: SYSTEM_PROMPT },
-                    ...messages
-                ],
-                max_tokens: 400,
-                temperature: 0.7
-            })
-        });
+        // Create a timeout promise (9 seconds to be safe within Vercel's 10s limit)
+        const timeoutPromise = new Promise((_, reject) =>
+            setTimeout(() => reject(new Error("Response timed out")), 9000)
+        );
+
+        const response: any = await Promise.race([
+            fetch('https://openrouter.ai/api/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${apiKey}`,
+                    'Content-Type': 'application/json',
+                    'HTTP-Referer': 'https://dreampoint.com',
+                    'X-Title': 'Dreampoint AI Beauty Coach'
+                },
+                body: JSON.stringify({
+                    model: "google/gemini-2.0-flash-exp:free",
+                    messages: [
+                        { role: "system", content: SYSTEM_PROMPT },
+                        ...messages
+                    ],
+                    max_tokens: 400,
+                    temperature: 0.7
+                })
+            }),
+            timeoutPromise
+        ]);
 
         if (!response.ok) {
             const errorText = await response.text();
@@ -157,17 +165,27 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
         console.error("Coach API Error:", error);
 
         const errorMessage = error.message || "";
+
+        // 1. Auth Error
         if (errorMessage.includes("401") || errorMessage.includes("Authentication")) {
             return {
                 role: 'assistant',
-                content: "⚠️ **System Error:** Authentication Failed. Please check the `OPENROUTER_API_KEY` in Vercel settings."
+                content: "⚠️ **Setup Required:** Please add `OPENROUTER_API_KEY` to Vercel Environment Variables."
             };
         }
 
-        // Return actual error for debugging instead of generic fallback
+        // 2. Timeout Error
+        if (errorMessage.includes("timed out")) {
+            return {
+                role: 'assistant',
+                content: "⏳ **Thinking...** The network is a bit slow right now. Could you ask that again?"
+            };
+        }
+
+        // 3. General Fallback (Clean UX, no scary JSON errors)
         return {
             role: 'assistant',
-            content: `⚠️ **Coach Connection Error:** ${errorMessage}\n\n(This means the AI brain is disconnected, so I can't read your messages yet!)`
+            content: "✨ The Dream Layer is fuzzy right now. Please try again in a moment!"
         };
     }
 }
