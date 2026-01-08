@@ -160,30 +160,14 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
         if (errorMessage.includes("401") || errorMessage.includes("Authentication")) {
             return {
                 role: 'assistant',
-                content: "I'm having trouble connecting to the free dream layer (Authentication Required). Please check your OpenRouter API key."
+                content: "⚠️ **System Error:** Authentication Failed. Please check the `OPENROUTER_API_KEY` in Vercel settings."
             };
         }
 
-        // Fallback responses as requested
-        const lastUserMessage = messages[messages.length - 1]?.content.toLowerCase() || "";
-
-        if (lastUserMessage.includes('price') || lastUserMessage.includes('cost') || lastUserMessage.includes('charge')) {
-            return {
-                role: 'assistant',
-                content: `💰 **Pricing Guide:**\n• Basic nails: $25-35\n• Gel/Extensions: $40-60\n• Lash sets: $80-120\n• Makeup: $75-150\n\n*Pro tip: Offer "First Client Special" at 20% off to build portfolio!*`
-            };
-        }
-
-        if (lastUserMessage.includes('promot') || lastUserMessage.includes('client') || lastUserMessage.includes('get business')) {
-            return {
-                role: 'assistant',
-                content: `🎯 **Client Acquisition:**\n1. Do 3 FREE services for Instagrammable clients\n2. Create "Day in Life" TikTok videos\n3. Partner with local boutiques for pop-ups\n4. Offer referral discounts\n\nWant specific strategies for your service?`
-            };
-        }
-
+        // Return actual error for debugging instead of generic fallback
         return {
             role: 'assistant',
-            content: "✨ Thanks for your question! Our AI is optimizing responses based on feedback from beauty pros like you.\n\nJoin our **Founders Circle** to help train this AI and shape Dreampoint's features!"
+            content: `⚠️ **Coach Connection Error:** ${errorMessage}\n\n(This means the AI brain is disconnected, so I can't read your messages yet!)`
         };
     }
 }
