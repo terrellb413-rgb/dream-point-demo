@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Space_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
+import QuickNavBar from "./QuickNavBar";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
@@ -27,7 +28,10 @@ export default function RootLayout({
       <body
         className={`${spaceGrotesk.variable} ${workSans.variable} antialiased font-work text-concrete-900`}
       >
-        {children}
+        <QuickNavBar />
+        <div className="pt-8">
+          {children}
+        </div>
       </body>
     </html>
   );
