@@ -169,11 +169,11 @@ export default function LeasingOfficePage({
                                 )}
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">2. Stock Services</h3>
-                                <p className="text-sm text-steel mb-3">List at least 1 service to verify your shop. You can add more later.</p>
+                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">2. Verify Service Menu</h3>
+                                <p className="text-sm text-steel mb-3">List at least 1 service to prove active business status. (Draft Mode)</p>
 
                                 {checklist.services_stocked ? (
-                                    <div className="text-xs font-bold uppercase text-blueprint">Completed</div>
+                                    <div className="text-xs font-bold uppercase text-blueprint">Verified</div>
                                 ) : (
                                     <a href={`/dashboard/${slug}/services`} className="inline-flex items-center gap-2 bg-concrete-100 border border-concrete-900 px-4 py-2 text-xs font-bold uppercase hover:bg-blueprint hover:text-white transition-colors">
                                         Open Service Editor <ArrowRight size={14} />
@@ -192,8 +192,8 @@ export default function LeasingOfficePage({
                                 )}
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">3. Set Future Goal</h3>
-                                <p className="text-sm text-steel mb-3">What would DreamPoint help you unlock? (Short text)</p>
+                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">3. Capture Vision</h3>
+                                <p className="text-sm text-steel mb-3">Where will this empire be in 12 months? Lock it in.</p>
 
                                 {checklist.goal_set ? (
                                     <div className="bg-blue-50 p-3 italic text-concrete-900 border-l-2 border-blueprint text-sm">
@@ -230,8 +230,8 @@ export default function LeasingOfficePage({
                                 )}
                             </div>
                             <div className="flex-1">
-                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">4. Plant Your Flag</h3>
-                                <p className="text-sm text-steel mb-3">Share a post/story about claiming your spot. Paste the link here.</p>
+                                <h3 className="font-space font-bold text-lg uppercase text-concrete-900">4. Signal Readiness</h3>
+                                <p className="text-sm text-steel mb-3">Share your reserved URL to signal you are a day-one founder.</p>
 
                                 {checklist.flag_planted ? (
                                     <div className="text-xs font-bold uppercase text-blueprint truncate max-w-[200px]">{checklist.flag_planted}</div>
@@ -265,7 +265,7 @@ export default function LeasingOfficePage({
                             ${isComplete ? 'bg-blueprint text-white hover:bg-concrete-900 hover:shadow-[4px_4px_0px_#000]' : 'bg-concrete-100 text-steel cursor-pointer hover:bg-concrete-200'}`}
                         >
                             {!isComplete ? <Lock size={18} /> : <Target size={18} />}
-                            {isComplete ? "Enter Founders Circle" : "Complete Checklist to Enter"}
+                            {isComplete ? "Access Founder Hub" : "Complete Checklist to Enter"}
                         </button>
 
                         <button

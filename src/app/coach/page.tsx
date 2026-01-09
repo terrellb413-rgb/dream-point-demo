@@ -24,8 +24,8 @@ export default function CoachPage() {
                     <Sparkles className="text-blueprint animate-pulse" size={14} />
                     <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900">Dreampoint AI</span>
                 </div>
-                <h1 className="font-space font-bold text-4xl uppercase tracking-tighter text-concrete-900">Break Through.</h1>
-                <p className="text-steel text-sm mt-2">Get expert salon strategy and luxury positioning advice instantly.</p>
+                <h1 className="font-space font-bold text-4xl uppercase tracking-tighter text-concrete-900">Strategy One.</h1>
+                <p className="text-steel text-sm mt-2">Your embedded business strategist. Always on, evolving with your business.</p>
             </div>
 
             {/* CHAT INTERFACE */}

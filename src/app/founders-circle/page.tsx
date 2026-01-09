@@ -28,10 +28,10 @@ export default async function FoundersCirclePage() {
                         <Crown className="text-blueprint" size={48} />
                     </div>
                     <h1 className="font-space font-bold text-5xl uppercase tracking-tighter text-concrete-900 leading-none">
-                        Founders Circle
+                        Founders Circle <span className="text-blueprint text-2xl align-top block sm:inline sm:align-baseline">(Day One)</span>
                     </h1>
                     <p className="text-concrete-900 font-bold max-w-lg mx-auto mt-4 text-lg">
-                        Welcome to the construction site. You are early.
+                        You are the architects. We are building this platform around your feedback. Your input shapes the concrete.
                     </p>
                 </div>
 
