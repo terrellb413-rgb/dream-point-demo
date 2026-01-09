@@ -53,7 +53,7 @@ export default function ClaimPage() {
                         Secure Your<br /><span className="text-blueprint">Plot.</span>
                     </h1>
                     <p className="text-steel text-lg">
-                        This URL will be yours forever. Choose wisely.
+                        This reserves your permanent Founder URL. The builder tools will unlock in phases.
                     </p>
                 </div>
 
@@ -86,7 +86,7 @@ export default function ClaimPage() {
                     <div className="h-6 mt-2 text-sm font-bold text-center">
                         {status === "taken" && (
                             <span className="text-brick">
-                                Taken. <a href="/office" className="underline hover:text-black">Already secured? Enter Office.</a>
+                                This plot is already claimed. <a href="/office" className="underline hover:text-black">Already secured? Enter Office.</a>
                             </span>
                         )}
                         {status === "available" && <span className="text-blueprint">This plot is available.</span>}
@@ -99,7 +99,7 @@ export default function ClaimPage() {
                             onClick={handleClaim}
                             className="w-full mt-6 bg-concrete-900 text-white font-space font-bold text-lg uppercase py-4 flex items-center justify-center gap-2 shadow-[4px_4px_0px_#2563eb] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#2563eb] active:translate-x-[0px] active:translate-y-[0px] active:shadow-none transition-all"
                         >
-                            Secure This Spot <ArrowRight size={20} />
+                            Claim Founder Permit <ArrowRight size={20} />
                         </button>
                     )}
 

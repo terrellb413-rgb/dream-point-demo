@@ -20,29 +20,29 @@ export default function Home() {
             <div className="w-1.5 h-1.5 bg-blueprint rounded-full animate-pulse" />
           </a>
           <h1 className="text-5xl sm:text-7xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900 max-w-2xl">
-            Build Your <br /> <span className="bg-blueprint text-white px-4">Dream Shop.</span>
+            Secure Your <br /> <span className="bg-blueprint text-white px-4">Digital Plot.</span>
           </h1>
           <p className="max-w-md text-concrete-900/70 text-lg font-work mt-4 leading-tight">
-            Stop sending clients to profile links. Start building a digital destination that reflects your craft.
+            The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Claim your position before we break ground.</span>
           </p>
         </div>
 
         <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-          {/* THE MAIN ATTRACTION: AI COACH */}
+          {/* THE MAIN ATTRACTION: CLAIM SPOT */}
           <a
-            href="/coach"
+            href="/claim"
             className="w-full bg-concrete-900 text-white border-2 border-concrete-900 px-8 py-6 font-space uppercase font-bold text-2xl shadow-[8px_8px_0px_#2563eb] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-3 group"
           >
-            <Sparkles className="text-yellow-400 animate-pulse group-hover:scale-125 transition-transform" />
-            Talk to the Coach
+            <Lock className="text-yellow-400 animate-pulse group-hover:scale-125 transition-transform" />
+            Secure My Spot
           </a>
 
           <div className="flex flex-col sm:flex-row gap-8 mt-4">
             <a
-              href="/claim"
+              href="/coach"
               className="text-xs font-bold uppercase tracking-widest text-concrete-900 border-b-2 border-concrete-900 hover:text-blueprint hover:border-blueprint transition-all pb-1 flex items-center gap-2"
             >
-              Reserve My Spot <ArrowRight size={14} />
+              Talk to Strategy Coach <ArrowRight size={14} />
             </a>
             <a
               href="/office"

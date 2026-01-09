@@ -10,13 +10,18 @@ type Message = {
     content: string;
 };
 
-const MessageBubble = ({ m, index }: { m: Message, index: number }) => {
+const MessageBubble = ({ m, index, messagesLength }: { m: Message, index: number, messagesLength: number }) => {
     const isUser = m.role === 'user';
     const isAssistant = m.role === 'assistant';
 
     let content = m.content;
-    if (isAssistant && index >= 5 && !content.includes('Dreampoint')) {
-        content += `\n\n💎 *Join our Founders Circle to help shape the platform!*`;
+
+    // Only show the promo on the VERY LAST message, and only if the conversation is long enough (3+ exchanges)
+    // This prevents it from appending to every single historical message
+    const isLatest = index === (messagesLength - 1);
+
+    if (isAssistant && index >= 5 && isLatest && !content.includes('Dreampoint')) {
+        content += `\n\n✨ **Build Your Empire with Us**\nDreampoint is the new operating system for beauty pros. Join the **Founders Circle** to get early access and tools to run your business on autopilot.`;
     }
 
     return (
@@ -86,7 +91,7 @@ export default function CoachChat({ compact = false }: { compact?: boolean }) {
         <div className={`flex flex-col bg-white border-2 border-concrete-900 shadow-[8px_8px_0px_#1f2937] overflow-hidden ${compact ? 'h-[400px]' : 'h-[550px]'}`}>
             <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50/30">
                 {messages.map((m, idx) => (
-                    <MessageBubble key={m.id} m={m} index={idx} />
+                    <MessageBubble key={m.id} m={m} index={idx} messagesLength={messages.length} />
                 ))}
                 {isTyping && (
                     <div className="flex gap-3">
