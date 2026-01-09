@@ -2,7 +2,52 @@
 
 import { useState, useEffect } from "react";
 import { Trash2, ExternalLink, ShieldAlert, RefreshCw } from "lucide-react";
-import { getAdminDataAction, deleteShopAdminAction, testConnectionAction } from "@/app/actions";
+import { getAdminDataAction, deleteShopAdminAction, testConnectionAction, addPlatformUpdateAction } from "@/app/actions";
+
+function AddUpdateForm() {
+    const [title, setTitle] = useState("");
+    const [content, setContent] = useState("");
+    const [status, setStatus] = useState<"idle" | "posting" | "done">("idle");
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!title || !content) return;
+        setStatus("posting");
+        await addPlatformUpdateAction({ title, content });
+        setStatus("done");
+        setTitle("");
+        setContent("");
+        setTimeout(() => setStatus("idle"), 2000);
+    };
+
+    return (
+        <div className="bg-white border-2 border-concrete-900 p-6 mb-8 shadow-[4px_4px_0px_#2563eb]">
+            <h3 className="font-space font-bold uppercase text-lg mb-4 flex items-center gap-2">
+                <span className="text-blueprint">📢</span> Post Platform Blueprint Update
+            </h3>
+            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+                <input
+                    className="border border-concrete-900 p-2 font-bold focus:border-blueprint outline-none"
+                    placeholder="Update Title (e.g. 'Login Flow Fixed')"
+                    value={title}
+                    onChange={e => setTitle(e.target.value)}
+                />
+                <textarea
+                    className="border border-concrete-900 p-2 text-sm focus:border-blueprint outline-none min-h-[80px]"
+                    placeholder="What did we build? (e.g. 'We fixed the redirection issue...')"
+                    value={content}
+                    onChange={e => setContent(e.target.value)}
+                />
+                <button
+                    disabled={status !== "idle" || !title}
+                    className="bg-concrete-900 text-white font-bold uppercase py-2 hover:bg-concrete-700 disabled:opacity-50 transition-colors"
+                >
+                    {status === "posting" ? "Publishing..." : status === "done" ? "Published!" : "Publish Update to Founders Circle"}
+                </button>
+            </form>
+        </div>
+    );
+}
 
 export default function SuperAdminPage() {
     const [shops, setShops] = useState<any[]>([]);
@@ -60,6 +105,9 @@ export default function SuperAdminPage() {
                         <RefreshCw size={20} className={loading ? "animate-spin" : ""} />
                     </button>
                 </div>
+
+                {/* ADD UPDATE FORM */}
+                <AddUpdateForm />
 
                 {/* Table */}
 

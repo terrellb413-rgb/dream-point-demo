@@ -41,11 +41,32 @@ export default async function FoundersCirclePage() {
                     <div className="lg:col-span-4 space-y-6">
                         <div className="bg-white border-2 border-concrete-900 p-6 shadow-[8px_8px_0px_#e9d5ff]">
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="font-space font-bold uppercase text-xl">Active Prompt</h2>
-                                <span className="bg-blueprint text-white px-2 py-0.5 text-[10px] uppercase font-bold">Expires in 2d</span>
+                                <h2 className="font-space font-bold uppercase text-xl">Daily Prompt</h2>
+                                <span className="bg-blueprint text-white px-2 py-0.5 text-[10px] uppercase font-bold">Expires in 24h</span>
                             </div>
-                            <p className="font-bold text-lg mb-4">"Show us your workspace setup."</p>
-                            <p className="text-sm text-steel mb-6">Take a photo of where you work (or plan to work) and tag #DreamPointFounder.</p>
+
+                            {/* ROTATING PROMPT LOGIC */}
+                            {(() => {
+                                const prompts = [
+                                    { text: "\"Show us your workspace setup.\"", sub: "Take a photo of where you work (or plan to work) and tag #DreamPointFounder." },
+                                    { text: "\"What is one service you want to add next year?\"", sub: "Dream big. What's the high-ticket item on your roadmap?" },
+                                    { text: "\"Who is your biggest business inspiration?\"", sub: "Tag a founder who paved the way for you." },
+                                    { text: "\"What is your 'power hour' for productivity?\"", sub: "When do you get your best work done? Morning or Midnight?" },
+                                    { text: "\"Favorite tool you can't live without?\"", sub: "Software, hardware, or analog. What runs your empire?" },
+                                    { text: "\"Post a 'Before & After' of your work.\"", sub: "Show the growth. Verify the craft." },
+                                    { text: "\"What music plays in your shop?\"", sub: "Share your 'Vibe Playlist' for the office." }
+                                ];
+                                const dayIndex = Math.floor(Date.now() / (1000 * 60 * 60 * 24));
+                                const p = prompts[dayIndex % prompts.length];
+
+                                return (
+                                    <>
+                                        <p className="font-bold text-lg mb-4">{p.text}</p>
+                                        <p className="text-sm text-steel mb-6">{p.sub}</p>
+                                    </>
+                                );
+                            })()}
+
                             <ShareButton />
                         </div>
 

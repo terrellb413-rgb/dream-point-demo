@@ -18,6 +18,26 @@ const QUESTIONS = [
         id: "q3",
         question: "Which feature should we build next?",
         options: ["Inventory Tracking", "Marketing SMS", "Member Logins"]
+    },
+    {
+        id: "q4",
+        question: "Membership Models: What fits you best?",
+        options: ["Monthly Subscriptions", "Annual Passes", "Punch Cards"]
+    },
+    {
+        id: "q5",
+        question: "Mobile App: What's more important?",
+        options: ["Booking Management", "Visual Portfolio", "Client Chat"]
+    },
+    {
+        id: "q6",
+        question: "Education: How do you learn best?",
+        options: ["Video Courses", "Live Workshops", "1-on-1 Coaching"]
+    },
+    {
+        id: "q7",
+        question: "Community: Where do you want to connect?",
+        options: ["Local Meetups", "Global Chat", "Mastermind Groups"]
     }
 ];
 
