@@ -131,6 +131,7 @@ export default function SuperAdminPage() {
                                 <th className="p-4 border-r border-concrete-700">Created</th>
                                 <th className="p-4 border-r border-concrete-700">Slug / URL</th>
                                 <th className="p-4 border-r border-concrete-700">Owner</th>
+                                <th className="p-4 border-r border-concrete-700">Flag Link</th>
                                 <th className="p-4 border-r border-concrete-700">Status</th>
                                 <th className="p-4 text-center">Actions</th>
                             </tr>
@@ -138,11 +139,11 @@ export default function SuperAdminPage() {
                         <tbody className="divide-y divide-concrete-100 text-sm">
                             {loading && shops.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className="p-8 text-center text-steel italic">Loading global data...</td>
+                                    <td colSpan={6} className="p-8 text-center text-steel italic">Loading global data...</td>
                                 </tr>
                             ) : shops.length === 0 ? (
                                 <tr>
-                                    <td colSpan={5} className="p-8 text-center text-steel italic">No shops found in database.</td>
+                                    <td colSpan={6} className="p-8 text-center text-steel italic">No shops found in database.</td>
                                 </tr>
                             ) : (
                                 shops.map((shop) => (
@@ -158,6 +159,19 @@ export default function SuperAdminPage() {
                                         <td className="p-4">
                                             <div>{shop.profile?.full_name || "Unknown"}</div>
                                             <div className="text-xs text-steel">{shop.profile?.craft}</div>
+                                        </td>
+                                        <td className="p-4 max-w-[200px] truncate">
+                                            {shop.checklist?.flag_planted ? (
+                                                <a
+                                                    href={shop.checklist.flag_planted.startsWith('http') ? shop.checklist.flag_planted : `https://${shop.checklist.flag_planted}`}
+                                                    target="_blank"
+                                                    className="text-xs text-blue-600 underline flex items-center gap-1 hover:text-blue-800"
+                                                >
+                                                    <ExternalLink size={10} /> {shop.checklist.flag_planted}
+                                                </a>
+                                            ) : (
+                                                <span className="text-xs text-gray-300 italic">No flag yet</span>
+                                            )}
                                         </td>
                                         <td className="p-4">
                                             <span className="bg-concrete-100 px-2 py-1 rounded text-xs font-bold uppercase border border-concrete-200">
