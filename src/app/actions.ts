@@ -131,7 +131,8 @@ export async function getCoachResponseAction(messages: { role: 'user' | 'assista
                     'X-Title': 'Dreampoint AI Beauty Coach'
                 },
                 body: JSON.stringify({
-                    model: "google/gemini-2.0-flash-exp:free",
+                    // Switched to Llama 3 8B (Free) because Gemini Flash was hitting 429 Rate Limits
+                    model: "meta-llama/llama-3.2-3b-instruct:free",
                     messages: [
                         { role: "system", content: SYSTEM_PROMPT },
                         ...messages
