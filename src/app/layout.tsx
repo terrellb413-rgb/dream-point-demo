@@ -16,10 +16,6 @@ const workSans = Work_Sans({
 export const metadata: Metadata = {
   title: "DreamPoint",
   description: "The General Contractor for Your Dreams.",
-  icons: {
-    icon: '/icon.jpg',
-    apple: '/apple-touch-icon.jpg',
-  },
 };
 
 export default function RootLayout({
