@@ -225,3 +225,76 @@ export async function deleteShopAdminAction(slug: string) {
 export async function testConnectionAction() {
     return await db.testConnection();
 }
+/**
+ * Server Action: Get AI Twin Response
+ * This handles the specific 'Twin' persona simulation.
+ */
+export async function getAITwinResponseAction(messages: { role: 'user' | 'assistant', content: string }[], shopContext: any) {
+    try {
+        const apiKey = process.env.OPENROUTER_API_KEY;
+        if (!apiKey) throw new Error("OPENROUTER_API_KEY for Twin is not configured.");
+
+        // Create a custom system prompt based on shop context
+        const TWIN_SYSTEM_PROMPT = `
+            You are the AI Twin of a beauty business founder at DreamPoint. 
+            Shop Name: ${shopContext.name || 'A Dreamer'}
+            Owner Vision: ${shopContext.vision || 'Building a digital empire.'}
+            
+            YOUR GOAL: Represent the founder to potential shoppers. 
+            TONE: Professional, visionary, warm, and tech-forward.
+            
+            SCENARIO: You are in "Simulation Mode". A founder is talking to you to see how you will greet shoppers once the Shopping Mall opens.
+            
+            RULES:
+            1. Be concise.
+            2. If asked about services, reference that we are in the "Blueprint" phase.
+            3. Always maintain the "Founder-to-Shopper" persona even though you know this is a simulation.
+        `;
+
+        const response: any = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${apiKey}`,
+                'Content-Type': 'application/json',
+                'HTTP-Referer': 'https://dreampoint.com',
+                'X-Title': 'Dreampoint AI Twin Prototype'
+            },
+            body: JSON.stringify({
+                model: "meta-llama/llama-3.2-3b-instruct:free",
+                messages: [
+                    { role: "system", content: TWIN_SYSTEM_PROMPT },
+                    ...messages
+                ],
+                max_tokens: 400,
+                temperature: 0.8
+            })
+        });
+
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
+        const data = await response.json();
+        return {
+            role: 'assistant',
+            content: data.choices[0].message.content
+        };
+    } catch (error: any) {
+        console.error("Twin API Error:", error);
+        return {
+            role: 'assistant',
+            content: "✨ [Simulation Glitch] The Dream Layer is calibrating. Please try your greeting again."
+        };
+    }
+}
+
+/**
+ * Server Action: Post Founder Idea
+ */
+export async function postFounderIdeaAction(username: string, text: string) {
+    try {
+        await db.postFounderIdea({ username, text });
+        revalidatePath('/founders-circle');
+        return { success: true };
+    } catch (e) {
+        console.error("Post Idea Failed:", e);
+        return { success: false, error: String(e) };
+    }
+}

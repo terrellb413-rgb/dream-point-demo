@@ -144,10 +144,9 @@ export default function LeasingOfficePage({
                 </div>
 
                 {/* THE CHECKLIST CARD */}
-                <div className="bg-white border-2 border-concrete-900 shadow-[8px_8px_0px_#1f2937] p-8">
-
+                <div className="bg-white border-2 border-concrete-900 shadow-[8px_8px_0px_#1f2937] p-8 mb-12">
+                    {/* ... (checklist content remains same) */}
                     <div className="space-y-8">
-
                         {/* ITEM 1: CLAIM (DONE) */}
                         <div className="flex gap-4 opacity-50">
                             <div className="mt-1">
@@ -275,7 +274,6 @@ export default function LeasingOfficePage({
                             <RotateCcw size={12} /> Test Mode: Reset Demo
                         </button>
                     </div>
-
                 </div>
             </div>
         </div>

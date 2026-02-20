@@ -7,15 +7,12 @@ export default function QuickNavBar() {
     const pathname = usePathname();
 
     const links = [
-        { num: 1, label: "Home", href: "/" },
-        { num: 2, label: "Claim", href: "/claim" },
-        { num: 3, label: "Onboard", href: "/onboarding" },
-        { num: 4, label: "Dash", href: "/office" }, // Using Office as Dash entry
-        { num: 5, label: "Coach", href: "/coach" },
-        { num: 6, label: "Founders", href: "/founders-circle" },
-        { num: 7, label: "Vision", href: "/vision" },
-        { num: 8, label: "Lobby", href: "/office" },
-        { num: 9, label: "Admin", href: "/super-admin" },
+        { num: 1, label: "Landing", href: "/" },
+        { num: 2, label: "Claim Plot", href: "/claim" },
+        { num: 3, label: "Checklist (Lobby)", href: "/office" },
+        { num: 4, label: "Founders Hub", href: "/founders-circle" },
+        { num: 5, label: "AI Coach", href: "/coach" },
+        { num: 6, label: "Platform Admin", href: "/super-admin" },
     ];
 
     if (process.env.NODE_ENV === 'production') {

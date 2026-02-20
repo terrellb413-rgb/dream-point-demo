@@ -10,19 +10,23 @@ export const db = {
     /**
      * Check if a slug is available
      */
-    checkSlug: async (slug: string): Promise<boolean> => {
-        const { data, error } = await supabase
-            .from('shops')
-            .select('slug')
-            .eq('slug', slug.toLowerCase())
-            .maybeSingle();
+    checkSlug: async (slug: string): Promise<{ available: boolean; error?: any }> => {
+        try {
+            const { data, error } = await supabase
+                .from('shops')
+                .select('slug')
+                .eq('slug', slug.toLowerCase())
+                .maybeSingle();
 
-        if (error) {
-            console.error("Error checking slug:", error);
-            // If error (e.g. table doesn't exist yet), default to available? Or fail safe.
-            return false;
+            if (error) {
+                console.error("Error checking slug:", error);
+                return { available: false, error };
+            }
+            return { available: !data };
+        } catch (e: any) {
+            console.error("Critical error in checkSlug:", e);
+            return { available: false, error: e };
         }
-        return !data; // If data exists, it's taken.
     },
 
     /**
@@ -174,6 +178,26 @@ export const db = {
     bumpEngagement: async (username: string, amount: number) => {
         // simplified
         return;
+    },
+
+    /**
+     * Post Founder Idea
+     */
+    postFounderIdea: async (data: { username: string; text: string }) => {
+        const { error } = await supabase
+            .from('founder_ideas')
+            .insert({
+                username: data.username,
+                content: data.text,
+                created_at: new Date().toISOString()
+            });
+
+        if (error) {
+            console.error("Error posting founder idea:", error);
+            // Fallback for demo: just log it if table doesn't exist
+            console.log("DEMO IDEA RECORDED:", data);
+        }
+        return { success: true };
     },
 
     resetShop: async (slug: string) => {
