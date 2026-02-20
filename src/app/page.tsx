@@ -14,14 +14,14 @@ export default function Home() {
 
         <div className="flex flex-col items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
           <div className="bg-concrete-900 text-white px-3 py-1 font-bold text-[10px] uppercase tracking-widest mb-2 border border-white shadow-md flex items-center gap-2">
-            <MapPin size={10} className="text-blueprint" /> Street 01: Now Leasing
+            <MapPin size={10} className="text-blueprint" /> Mall Level 01: Now Leasing
           </div>
 
           <h1 className="text-6xl sm:text-8xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900">
-            Secure Your <br /> <span className="bg-blueprint text-white px-4">Digital Plot.</span>
+            Rent Your <br /> <span className="bg-blueprint text-white px-4">Digital Booth.</span>
           </h1>
           <p className="max-w-md text-concrete-900/70 text-lg font-work mt-6 leading-tight">
-            The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Claim your position before we break ground.</span>
+            The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Secure your space in the Dreampoint Mall before we break ground.</span>
           </p>
         </div>
 
@@ -59,7 +59,7 @@ export default function Home() {
             <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900">The Blueprint</span>
           </div>
           <h2 className="font-space font-bold text-4xl md:text-6xl uppercase tracking-tighter text-concrete-900 leading-[0.9]">
-            The Digital <br /> <span className="text-blueprint">Main Street.</span>
+            The Digital <br /> <span className="text-blueprint">Dreampoint Mall.</span>
           </h2>
         </div>
 
@@ -80,7 +80,7 @@ export default function Home() {
               <Sparkles className="text-blueprint" /> The Solution
             </h3>
             <p className="text-gray-300 leading-relaxed font-medium">
-              We're building a digital Main Street. A place where your business is a fixed destination. A storefront that you own, designed with a luxury "dream-layer" atmosphere that treats your craft like art.
+              We're building a digital Mall. A place where your business isn't a link, but a dedicated booth. A storefront that you own, designed with a luxury "dream-layer" atmosphere that treats your craft like art.
             </p>
           </div>
         </div>
@@ -92,7 +92,7 @@ export default function Home() {
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: <MapPin />, title: "Claim", desc: "Reserve your unique plot on the map." },
+              { icon: <MapPin />, title: "Inquire", desc: "Rent your digital booth space in the mall." },
               { icon: <Sparkles />, title: "Consult", desc: "Strategy sessions with the AI Coach." },
               { icon: <Crown />, title: "Induct", desc: "Join the Founders Circle building team." },
               { icon: <Zap />, title: "Launch", desc: "Open your high-fidelity storefront." }
