@@ -16,6 +16,8 @@ export default function AITwinStudio({ shopContext }: { shopContext: any }) {
     const [messages, setMessages] = useState<Message[]>([]);
     const [input, setInput] = useState("");
     const [isTyping, setIsTyping] = useState(false);
+    const [progress, setProgress] = useState(12); // Starting baseline
+    const [synapses, setSynapses] = useState(1024);
     const scrollRef = useRef<HTMLDivElement>(null);
 
     // Initial greeting based on mode
@@ -57,6 +59,12 @@ export default function AITwinStudio({ shopContext }: { shopContext: any }) {
             const aiResponse = await getAITwinResponseAction(apiMessages, shopContext);
             const aiMsg: Message = { id: (Date.now() + 1).toString(), role: "assistant", content: aiResponse.content };
             setMessages(prev => [...prev, aiMsg]);
+
+            // Increment progress if in trainer mode
+            if (mode === "trainer") {
+                setProgress(prev => Math.min(prev + 4, 100));
+                setSynapses(prev => prev + Math.floor(Math.random() * 50) + 10);
+            }
         } catch (err) {
             console.error(err);
         } finally {
@@ -101,16 +109,33 @@ export default function AITwinStudio({ shopContext }: { shopContext: any }) {
             </div>
 
             {/* STATUS BAR */}
-            <div className="bg-concrete-100 border-b border-concrete-200 px-4 py-2 flex items-center justify-between">
-                <div className="flex items-center gap-2">
+            <div className="bg-concrete-100 border-b-2 border-concrete-900 px-4 py-3 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div className="flex items-center gap-4 flex-1">
+                    <div className="flex flex-col gap-1 flex-1 max-w-[200px]">
+                        <div className="flex justify-between text-[8px] font-bold uppercase tracking-widest text-concrete-500">
+                            <span>Neural Integrity</span>
+                            <span>{progress}%</span>
+                        </div>
+                        <div className="h-2 bg-concrete-200 border border-concrete-900 overflow-hidden">
+                            <div
+                                className="h-full bg-blueprint transition-all duration-1000"
+                                style={{ width: `${progress}%` }}
+                            />
+                        </div>
+                    </div>
+                    <div className="h-8 w-[1px] bg-concrete-300 hidden sm:block" />
+                    <div className="flex flex-col">
+                        <span className="text-[8px] font-bold uppercase tracking-widest text-concrete-500">Synapse Connections</span>
+                        <span className="text-[10px] font-mono font-bold text-blueprint">{synapses.toLocaleString()}</span>
+                    </div>
+                </div>
+
+                <div className="flex items-center gap-2 self-end sm:self-auto">
                     <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                     <span className="text-[10px] font-bold uppercase text-concrete-600 tracking-tighter">
-                        Twin Connected: {mode === "trainer" ? "Neural Link Active" : "Shopper Simulation Running"}
+                        {mode === "trainer" ? "Neural Link Active" : "Shopper Simulation Running"}
                     </span>
                 </div>
-                <button className="text-concrete-400 hover:text-concrete-900 transition-colors">
-                    <Info size={14} />
-                </button>
             </div>
 
             {/* CHAT AREA */}
