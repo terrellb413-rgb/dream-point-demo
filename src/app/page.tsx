@@ -28,7 +28,7 @@ export default function Home() {
               <Zap className="text-yellow-400" /> The Problem
             </h3>
             <p className="text-concrete-900/70 leading-relaxed font-medium">
-              Most creators live in a "Feed." You post, it disappears. Your "business" is often just a link in a profile that takes 3 clicks to find. You don't have a home; you have a rent-free tent.
+              Most creators live in a "Feed." You post, it disappears. Your "business" is often just a link in a profile that takes 3 clicks to find. It doesn't feel like a home; more like a rent-free tent.
             </p>
           </div>
 
