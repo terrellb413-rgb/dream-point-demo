@@ -75,8 +75,9 @@ export default function Home() {
             <MapPin size={10} className="text-blueprint" /> Mall Level 01: Now Leasing
           </div>
 
-          <h1 className="text-6xl sm:text-8xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900">
-            Rent Your <br /> <span className="bg-blueprint text-white px-4">Digital Booth.</span>
+          <h1 className="text-6xl sm:text-8xl font-space font-bold uppercase tracking-tighter leading-[0.95] text-concrete-900">
+            Rent Your <br />
+            <span className="inline-block bg-blueprint text-white px-4 py-1 mt-2">Digital Booth.</span>
           </h1>
           <p className="max-w-md text-concrete-900/70 text-lg font-work mt-6 leading-tight text-balance">
             The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Secure your space in the Dreampoint Mall before we break ground.</span>
