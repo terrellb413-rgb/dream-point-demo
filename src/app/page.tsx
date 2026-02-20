@@ -28,7 +28,7 @@ export default function Home() {
               <Zap className="text-yellow-400" /> The Problem
             </h3>
             <p className="text-concrete-900/70 leading-relaxed font-medium">
-              Most creators live in a "Feed." You post, it disappears. Your "business" is often just a link in a profile that takes 3 clicks to find. It doesn't feel like a home; more like a rent-free tent.
+              Social apps like Instagram and TikTok treat your business like a disposable "post" in a distracting, infinite feed. You don't have a home; you have a rent-free tent that disappears the moment the scrolling starts.
             </p>
           </div>
 
@@ -38,7 +38,7 @@ export default function Home() {
               <Sparkles className="text-blueprint" /> The Solution
             </h3>
             <p className="text-gray-300 leading-relaxed font-medium">
-              Stop camping. Start building. DreamPoint is the luxury digital mall where your business isn't a "link"—it's a permanent, high-fidelity storefront. We wrap your expertise in a prestigious "dream-layer" atmosphere that treats your craft like art.
+              Stop the scrolling. DreamPoint is the luxury digital mall where your brand isn't a fleeting notification—it's a permanent destination. We give your business a high-fidelity storefront and a "dream-layer" atmosphere that treats your craft like art.
             </p>
           </div>
         </div>
