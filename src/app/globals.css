@@ -27,8 +27,10 @@
 body {
   /* Sky (Top) -> Lavender/Pink (Bottom) */
   background: linear-gradient(to bottom, var(--color-dream-sky) 0%, var(--color-dream-pink) 100%);
-  min-height: 100vh;
+  min-height: 100dvh;
   color: var(--color-concrete-900);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* UTILITY: Bloom Effects */
@@ -38,19 +40,31 @@ body {
 
 /* Momentous Animations */
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
   background-size: 200% 100%;
   animation: shimmer 2s infinite;
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 .animate-float {
@@ -58,8 +72,15 @@ body {
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 .animate-scale-in {

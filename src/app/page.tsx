@@ -2,17 +2,16 @@ import { Sparkles, ArrowRight, Lock, MapPin, Building2, Zap, Crown, Video, Insta
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-transparent p-4 md:p-8 font-work relative overflow-x-hidden flex flex-col items-center">
+    <div className="relative min-h-screen bg-transparent p-4 md:p-8 font-work flex flex-col items-center overflow-x-hidden">
 
-      {/* DREAM LAYER: Atmosphere */}
-      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-dream-sky opacity-20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-dream-pink opacity-20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-white opacity-40 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
+      {/* DREAM LAYER: Atmosphere - Hyper-Simplified for GPU Compatibility */}
+      <div className="absolute top-0 left-0 w-[250px] h-[250px] bg-dream-sky opacity-10 blur-[50px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-dream-pink opacity-10 blur-[60px] rounded-full pointer-events-none" />
 
       {/* VISION / STORY SECTION */}
       <section className="w-full max-w-5xl relative z-10 pt-20 pb-20">
         <div className="text-center mb-16 px-4">
-          <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/40 shadow-sm mb-6">
+          <div className="inline-flex items-center gap-2 bg-white px-4 py-1.5 rounded-full border border-concrete-200 shadow-sm mb-6">
             <Building2 className="text-blueprint" size={14} />
             <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900">The Blueprint</span>
           </div>
@@ -55,7 +54,7 @@ export default function Home() {
               { icon: <Crown />, title: "Induct", desc: "Join the Founders Circle building team." },
               { icon: <Zap />, title: "Launch", desc: "Open your high-fidelity storefront." }
             ].map((step, i) => (
-              <div key={i} className="bg-white/40 backdrop-blur-sm border-2 border-concrete-900 p-6 flex flex-col items-center text-center group hover:bg-white transition-all shadow-[4px_4px_0px_#1f2937] hover:shadow-none translate-x-[-2px] translate-y-[-2px] hover:translate-x-0 hover:translate-y-0">
+              <div key={i} className="bg-white border-2 border-concrete-900 p-6 flex flex-col items-center text-center group hover:bg-white transition-all shadow-[4px_4px_0px_#1f2937] hover:shadow-none translate-x-[-2px] translate-y-[-2px] hover:translate-x-0 hover:translate-y-0">
                 <div className="p-3 bg-concrete-100 rounded-full border-2 border-concrete-900 mb-4 group-hover:bg-blueprint group-hover:text-white transition-colors">
                   {step.icon}
                 </div>
@@ -70,7 +69,7 @@ export default function Home() {
       {/* HERO SECTION */}
       <main className="flex flex-col gap-10 items-center text-center relative z-10 pb-32 w-full max-w-4xl">
 
-        <div className="flex flex-col items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+        <div className="flex flex-col items-center gap-4">
           <div className="bg-concrete-900 text-white px-3 py-1 font-bold text-[10px] uppercase tracking-widest mb-2 border border-white shadow-md flex items-center gap-2">
             <MapPin size={10} className="text-blueprint" /> Mall Level 01: Now Leasing
           </div>
@@ -108,7 +107,7 @@ export default function Home() {
           </div>
 
           {/* SOCIAL ECOSYSTEM NAVIGATION */}
-          <div className="mt-12 flex flex-col items-center gap-4 animate-in fade-in slide-in-from-top-4 duration-1000 delay-500">
+          <div className="mt-12 flex flex-col items-center gap-4">
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-concrete-900/40">Watch the Construction</span>
             <div className="flex gap-6">
               <a
