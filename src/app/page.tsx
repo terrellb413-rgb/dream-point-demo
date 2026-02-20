@@ -2,11 +2,12 @@ import { Sparkles, ArrowRight, Lock, MapPin, Building2, Zap, Crown, Video, Insta
 
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-transparent p-4 md:p-8 font-work flex flex-col items-center overflow-x-hidden">
+    <div className="relative min-h-dvh bg-transparent p-4 md:p-8 font-work flex flex-col items-center overflow-x-hidden">
 
-      {/* DREAM LAYER: Atmosphere - Hyper-Simplified for GPU Compatibility */}
-      <div className="absolute top-0 left-0 w-[250px] h-[250px] bg-dream-sky opacity-10 blur-[50px] rounded-full pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[300px] h-[300px] bg-dream-pink opacity-10 blur-[60px] rounded-full pointer-events-none" />
+      {/* DREAM LAYER: Atmosphere - Using optimized classes for Mobile Compatibility */}
+      <div className="absolute top-0 left-0 w-[300px] h-[300px] bg-dream-sky opacity-15 dream-blur rounded-full pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-dream-pink opacity-15 dream-blur rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] bg-white opacity-20 dream-blur rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2 hidden md:block" />
 
       {/* VISION / STORY SECTION */}
       <section className="w-full max-w-5xl relative z-10 pt-20 pb-20">

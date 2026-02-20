@@ -6,11 +6,13 @@ import QuickNavBar from "./QuickNavBar";
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space",
   subsets: ["latin"],
+  display: "swap",
 });
 
 const workSans = Work_Sans({
   variable: "--font-work",
   subsets: ["latin"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
@@ -37,12 +39,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.variable} ${workSans.variable} antialiased font-work text-concrete-900`}
+        className={`${spaceGrotesk.variable} ${workSans.variable} antialiased font-work text-concrete-900 bg-transparent`}
       >
         <QuickNavBar />
-        <div className="pt-8">
-          {children}
-        </div>
+        {children}
       </body>
     </html>
   );

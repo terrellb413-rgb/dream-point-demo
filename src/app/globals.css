@@ -26,11 +26,25 @@
 /* GLOBAL ATMOSPHERE */
 body {
   /* Sky (Top) -> Lavender/Pink (Bottom) */
-  background: linear-gradient(to bottom, var(--color-dream-sky) 0%, var(--color-dream-pink) 100%);
+  background: var(--color-dream-cloud);
+  background-image: linear-gradient(to bottom, var(--color-dream-sky) 0%, var(--color-dream-pink) 100%);
   min-height: 100dvh;
   color: var(--color-concrete-900);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
+}
+
+/* Base style for blurs */
+.dream-blur {
+  filter: blur(100px);
+}
+
+/* Disable or reduce blur on mobile to prevent GPU crashes/white screens */
+@media (max-width: 768px) {
+  .dream-blur {
+    filter: blur(40px);
+    opacity: 0.1;
+  }
 }
 
 /* UTILITY: Bloom Effects */
