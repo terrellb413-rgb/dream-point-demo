@@ -38,7 +38,7 @@ export default function Home() {
               <Sparkles className="text-blueprint" /> The Solution
             </h3>
             <p className="text-gray-300 leading-relaxed font-medium">
-              We're building a digital Mall. A place where your business isn't a link, but a dedicated booth. A storefront that you own, designed with a luxury "dream-layer" atmosphere that treats your craft like art.
+              Stop camping. Start building. DreamPoint is the luxury digital mall where your business isn't a "link"—it's a permanent, high-fidelity storefront. We wrap your expertise in a prestigious "dream-layer" atmosphere that treats your craft like art.
             </p>
           </div>
         </div>
