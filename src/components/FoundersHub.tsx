@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Crown, Brain, Zap, Megaphone, Star, Sparkles, Layout } from "lucide-react";
+import { Crown, Brain, Zap, Megaphone, Star, Sparkles, Layout, Video } from "lucide-react";
 import clsx from "clsx";
 import AITwinStudio from "@/components/AITwinStudio";
 import CoachChat from "../app/coach/CoachChat";
@@ -68,6 +68,35 @@ export default function FoundersHub({
 
                             <p className="font-bold text-lg mb-4">"Show us your workspace setup."</p>
                             <p className="text-sm text-steel mb-6">Take a photo of where you work (or plan to work) and tag #DreamPointFounder.</p>
+
+                            <div className="flex flex-col gap-2 mb-6 border-t border-concrete-100 pt-4">
+                                <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900 flex items-center gap-1">
+                                    <Video size={12} className="text-blueprint" /> See Examples:
+                                </span>
+                                <div className="flex gap-4">
+                                    <a
+                                        href="https://www.tiktok.com/@dreampointapp?is_from_webapp=1&sender_device=pc"
+                                        target="_blank"
+                                        className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
+                                    >
+                                        TikTok
+                                    </a>
+                                    <a
+                                        href="https://www.instagram.com/dreampointapp?igsh=NXZkemIxd2s2dzVk&utm_source=qr"
+                                        target="_blank"
+                                        className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
+                                    >
+                                        Instagram
+                                    </a>
+                                    <a
+                                        href="https://youtube.com/@dreampointapp?si=Ey4Qd30AkqVnFb5G"
+                                        target="_blank"
+                                        className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
+                                    >
+                                        YouTube
+                                    </a>
+                                </div>
+                            </div>
 
                             <ShareButton />
                         </div>

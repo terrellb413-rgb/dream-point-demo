@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Space_Grotesk, Work_Sans } from "next/font/google";
 import "./globals.css";
 import QuickNavBar from "./QuickNavBar";
@@ -13,9 +13,20 @@ const workSans = Work_Sans({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export const metadata: Metadata = {
-  title: "DreamPoint",
-  description: "The General Contractor for Your Dreams.",
+  title: "DreamPoint | General Contractor for Your Dreams",
+  description: "The future operating system for beauty founders. Secure your digital booth in the Dreampoint Mall.",
+  openGraph: {
+    title: "DreamPoint",
+    description: "Secure your digital booth in the Dreampoint Mall.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({

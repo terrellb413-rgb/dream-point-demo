@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Hammer, CircleDashed, CheckCircle2, Lock, ArrowRight, Flag, Target, RotateCcw } from "lucide-react";
+import { Hammer, CircleDashed, CheckCircle2, Lock, ArrowRight, Flag, Target, RotateCcw, Sparkles } from "lucide-react";
 import { getShopAction, updateChecklistAction, resetShopAction } from "@/app/actions";
 
 export default function LeasingOfficePage({
@@ -235,22 +235,54 @@ export default function LeasingOfficePage({
                                 {checklist.flag_planted ? (
                                     <div className="text-xs font-bold uppercase text-blueprint truncate max-w-[200px]">{checklist.flag_planted}</div>
                                 ) : (
-                                    <div className="flex gap-2">
-                                        <input
-                                            type="text"
-                                            placeholder="https://instagram.com/p/..."
-                                            value={flagInput}
-                                            onChange={(e) => setFlagInput(e.target.value)}
-                                            className="w-full border border-concrete-900 p-2 font-work text-sm outline-none focus:border-blueprint"
-                                        />
-                                        <button
-                                            onClick={handleSaveFlag}
-                                            disabled={!flagInput || loading}
-                                            className="bg-concrete-900 text-white px-4 py-2 text-xs font-bold uppercase disabled:opacity-50"
-                                        >
-                                            Verify
-                                        </button>
-                                    </div>
+                                    <>
+                                        <div className="flex gap-2 mb-4">
+                                            <input
+                                                type="text"
+                                                placeholder="https://instagram.com/p/..."
+                                                value={flagInput}
+                                                onChange={(e) => setFlagInput(e.target.value)}
+                                                className="w-full border border-concrete-900 p-2 font-work text-sm outline-none focus:border-blueprint"
+                                            />
+                                            <button
+                                                onClick={handleSaveFlag}
+                                                disabled={!flagInput || loading}
+                                                className="bg-concrete-900 text-white px-4 py-2 text-xs font-bold uppercase disabled:opacity-50"
+                                            >
+                                                Verify
+                                            </button>
+                                        </div>
+
+                                        {/* INSPIRATION SUB-SECTION */}
+                                        <div className="bg-concrete-50 border border-concrete-200 p-4 rounded-sm">
+                                            <p className="text-[10px] font-bold uppercase tracking-widest text-concrete-900 mb-3 flex items-center gap-2">
+                                                <Sparkles size={12} className="text-blueprint" /> Need Inspiration?
+                                            </p>
+                                            <div className="flex flex-wrap gap-3">
+                                                <a
+                                                    href="https://www.tiktok.com/@dreampointapp?is_from_webapp=1&sender_device=pc"
+                                                    target="_blank"
+                                                    className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors flex items-center gap-1"
+                                                >
+                                                    TikTok
+                                                </a>
+                                                <a
+                                                    href="https://www.instagram.com/dreampointapp?igsh=NXZkemIxd2s2dzVk&utm_source=qr"
+                                                    target="_blank"
+                                                    className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors flex items-center gap-1"
+                                                >
+                                                    Instagram
+                                                </a>
+                                                <a
+                                                    href="https://youtube.com/@dreampointapp?si=Ey4Qd30AkqVnFb5G"
+                                                    target="_blank"
+                                                    className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors flex items-center gap-1"
+                                                >
+                                                    YouTube
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </>
                                 )}
                             </div>
                         </div>

@@ -1,59 +1,17 @@
-import { Sparkles, ArrowRight, Lock, MapPin, Building2, Zap, Crown } from "lucide-react";
+import { Sparkles, ArrowRight, Lock, MapPin, Building2, Zap, Crown, Video, Instagram, Youtube } from "lucide-react";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-transparent p-4 md:p-8 font-work relative overflow-hidden flex flex-col items-center">
+    <div className="min-h-screen bg-transparent p-4 md:p-8 font-work relative overflow-x-hidden flex flex-col items-center">
 
       {/* DREAM LAYER: Atmosphere */}
-      <div className="fixed top-[-10%] left-[-10%] w-[500px] h-[500px] bg-dream-sky opacity-20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="fixed bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-dream-pink opacity-20 blur-[100px] rounded-full pointer-events-none" />
-      <div className="fixed top-1/2 left-1/2 w-[800px] h-[800px] bg-white opacity-40 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
-
-      {/* HERO SECTION */}
-      <main className="flex flex-col gap-10 items-center text-center relative z-10 pt-20 pb-32 w-full max-w-4xl">
-
-        <div className="flex flex-col items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
-          <div className="bg-concrete-900 text-white px-3 py-1 font-bold text-[10px] uppercase tracking-widest mb-2 border border-white shadow-md flex items-center gap-2">
-            <MapPin size={10} className="text-blueprint" /> Mall Level 01: Now Leasing
-          </div>
-
-          <h1 className="text-6xl sm:text-8xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900">
-            Rent Your <br /> <span className="bg-blueprint text-white px-4">Digital Booth.</span>
-          </h1>
-          <p className="max-w-md text-concrete-900/70 text-lg font-work mt-6 leading-tight">
-            The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Secure your space in the Dreampoint Mall before we break ground.</span>
-          </p>
-        </div>
-
-        <div className="flex flex-col items-center gap-6 w-full max-w-sm">
-          <a
-            href="/claim"
-            className="w-full bg-concrete-900 text-white border-2 border-concrete-900 px-8 py-6 font-space uppercase font-bold text-2xl shadow-[8px_8px_0px_#2563eb] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-3 group"
-          >
-            <Lock className="text-yellow-400 animate-pulse group-hover:scale-125 transition-transform" />
-            Secure My Spot
-          </a>
-
-          <div className="flex flex-col sm:flex-row gap-8 mt-4">
-            <a
-              href="/coach"
-              className="text-xs font-bold uppercase tracking-widest text-concrete-900 border-b-2 border-concrete-900 hover:text-blueprint hover:border-blueprint transition-all pb-1 flex items-center gap-2"
-            >
-              Talk to Strategy Coach <ArrowRight size={14} />
-            </a>
-            <a
-              href="/office"
-              className="text-xs font-bold uppercase tracking-widest text-concrete-900/50 hover:text-concrete-900 transition-all flex items-center gap-2"
-            >
-              <Lock size={12} /> Enter Office
-            </a>
-          </div>
-        </div>
-      </main>
+      <div className="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-dream-sky opacity-20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-dream-pink opacity-20 blur-[100px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-white opacity-40 blur-[150px] rounded-full pointer-events-none -translate-x-1/2 -translate-y-1/2" />
 
       {/* VISION / STORY SECTION */}
-      <section className="w-full max-w-5xl relative z-10 pb-32">
-        <div className="text-center mb-16">
+      <section className="w-full max-w-5xl relative z-10 pt-20 pb-20">
+        <div className="text-center mb-16 px-4">
           <div className="inline-flex items-center gap-2 bg-white/50 backdrop-blur-md px-4 py-1.5 rounded-full border border-white/40 shadow-sm mb-6">
             <Building2 className="text-blueprint" size={14} />
             <span className="text-[10px] font-bold uppercase tracking-widest text-concrete-900">The Blueprint</span>
@@ -107,8 +65,86 @@ export default function Home() {
             ))}
           </div>
         </div>
+      </section>
 
-        {/* FINAL CALL TO ACTION */}
+      {/* HERO SECTION */}
+      <main className="flex flex-col gap-10 items-center text-center relative z-10 pb-32 w-full max-w-4xl">
+
+        <div className="flex flex-col items-center gap-4 animate-in fade-in slide-in-from-bottom-4 duration-700">
+          <div className="bg-concrete-900 text-white px-3 py-1 font-bold text-[10px] uppercase tracking-widest mb-2 border border-white shadow-md flex items-center gap-2">
+            <MapPin size={10} className="text-blueprint" /> Mall Level 01: Now Leasing
+          </div>
+
+          <h1 className="text-6xl sm:text-8xl font-space font-bold uppercase tracking-tighter leading-[0.85] text-concrete-900">
+            Rent Your <br /> <span className="bg-blueprint text-white px-4">Digital Booth.</span>
+          </h1>
+          <p className="max-w-md text-concrete-900/70 text-lg font-work mt-6 leading-tight text-balance">
+            The future operating system for beauty founders. You are early. <span className="text-concrete-900 font-bold">Secure your space in the Dreampoint Mall before we break ground.</span>
+          </p>
+        </div>
+
+        <div className="flex flex-col items-center gap-6 w-full max-w-sm">
+          <a
+            href="/claim"
+            className="w-full bg-concrete-900 text-white border-2 border-concrete-900 px-8 py-6 font-space uppercase font-bold text-2xl shadow-[8px_8px_0px_#2563eb] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all flex items-center justify-center gap-3 group"
+          >
+            <Lock className="text-yellow-400 animate-pulse group-hover:scale-125 transition-transform" />
+            Secure My Spot
+          </a>
+
+          <div className="flex flex-col sm:flex-row gap-8 mt-4">
+            <a
+              href="/coach"
+              className="text-xs font-bold uppercase tracking-widest text-concrete-900 border-b-2 border-concrete-900 hover:text-blueprint hover:border-blueprint transition-all pb-1 flex items-center gap-2"
+            >
+              Talk to Strategy Coach <ArrowRight size={14} />
+            </a>
+            <a
+              href="/office"
+              className="text-xs font-bold uppercase tracking-widest text-concrete-900/50 hover:text-concrete-900 transition-all flex items-center gap-2"
+            >
+              <Lock size={12} /> Enter Office
+            </a>
+          </div>
+
+          {/* SOCIAL ECOSYSTEM NAVIGATION */}
+          <div className="mt-12 flex flex-col items-center gap-4 animate-in fade-in slide-in-from-top-4 duration-1000 delay-500">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-concrete-900/40">Watch the Construction</span>
+            <div className="flex gap-6">
+              <a
+                href="https://www.tiktok.com/@dreampointapp?is_from_webapp=1&sender_device=pc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white border-2 border-concrete-900 rounded-full shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-concrete-900 hover:text-blueprint"
+                title="TikTok"
+              >
+                <Video size={18} />
+              </a>
+              <a
+                href="https://www.instagram.com/dreampointapp?igsh=NXZkemIxd2s2dzVk&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white border-2 border-concrete-900 rounded-full shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-concrete-900 hover:text-blueprint"
+                title="Instagram"
+              >
+                <Instagram size={18} />
+              </a>
+              <a
+                href="https://youtube.com/@dreampointapp?si=Ey4Qd30AkqVnFb5G"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 bg-white border-2 border-concrete-900 rounded-full shadow-[4px_4px_0px_#000] hover:translate-x-0.5 hover:translate-y-0.5 hover:shadow-none transition-all text-concrete-900 hover:text-blueprint"
+                title="YouTube"
+              >
+                <Youtube size={18} />
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      {/* FINAL CALL TO ACTION (Pushed to bottom) */}
+      <section className="w-full max-w-5xl relative z-10 pb-32">
         <div className="bg-blueprint text-white p-10 text-center border-4 border-concrete-900 shadow-[12px_12px_0px_#000] mx-4">
           <Crown size={48} className="mx-auto mb-6 text-yellow-400" />
           <h2 className="font-space font-bold text-4xl uppercase tracking-tighter mb-4 leading-none">
