@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Crown, Brain, Zap, Megaphone, Star, Sparkles, Layout, Video } from "lucide-react";
+import { Crown, Brain, Zap, Megaphone, Star, Sparkles, Layout, Video, Box } from "lucide-react";
 import clsx from "clsx";
 import AITwinStudio from "@/components/AITwinStudio";
 import CoachChat from "../app/coach/CoachChat";
@@ -129,12 +129,51 @@ export default function FoundersHub({
                         </div>
                     </div>
 
-                    {/* MIDDLE: AI COACH (4 cols) */}
-                    <div className="lg:col-span-4 flex flex-col">
-                        <div className="bg-concrete-900 text-white p-4 font-space font-bold uppercase text-sm flex items-center gap-2 border-2 border-concrete-900 border-b-0">
-                            <Sparkles size={16} className="text-yellow-400" /> Executive AI Coach
+                    {/* MIDDLE: AI COACH & FLOOR PLAN (4 cols) */}
+                    <div className="lg:col-span-4 flex flex-col gap-6">
+                        {/* MALL FLOOR PLAN / PLOT ASSIGNMENT */}
+                        <div className="bg-white border-2 border-concrete-900 p-6 shadow-[8px_8px_0px_#2563eb] relative overflow-hidden">
+                            <div className="absolute top-0 right-0 p-2 bg-blueprint/5 border-b border-l border-blueprint/10 font-mono text-[8px] uppercase tracking-tighter text-blueprint">
+                                Mall Level 01 // Blueprint Reveal
+                            </div>
+                            <h3 className="font-space font-bold uppercase text-xs tracking-widest text-blueprint mb-6 flex items-center gap-2">
+                                <Box size={14} /> Plot Assignment
+                            </h3>
+
+                            <div className="grid grid-cols-5 gap-2 mb-6">
+                                {[...Array(10)].map((_, i) => (
+                                    <div
+                                        key={i}
+                                        className={clsx(
+                                            "aspect-square border-2 flex items-center justify-center text-[8px] font-bold uppercase transition-all",
+                                            i === 0
+                                                ? "bg-blueprint text-white border-concrete-900 shadow-[2px_2px_0px_#000] animate-pulse"
+                                                : "bg-concrete-50 border-concrete-200 text-concrete-300 border-dashed"
+                                        )}
+                                    >
+                                        {i === 0 ? "You" : `P-0${i + 1}`}
+                                    </div>
+                                ))}
+                            </div>
+
+                            <div className="space-y-3">
+                                <div className="flex justify-between items-end border-b border-concrete-100 pb-2">
+                                    <span className="text-[10px] font-bold uppercase text-steel">Assigned Plot</span>
+                                    <span className="text-sm font-space font-bold uppercase text-concrete-900">Alpha-01</span>
+                                </div>
+                                <div className="flex justify-between items-end border-b border-concrete-100 pb-2">
+                                    <span className="text-[10px] font-bold uppercase text-steel">Zoning Status</span>
+                                    <span className="text-[10px] font-bold uppercase text-blueprint">High-Fidelity</span>
+                                </div>
+                            </div>
                         </div>
-                        <CoachChat compact />
+
+                        <div className="flex flex-col flex-1">
+                            <div className="bg-concrete-900 text-white p-4 font-space font-bold uppercase text-sm flex items-center gap-2 border-2 border-concrete-900 border-b-0">
+                                <Sparkles size={16} className="text-yellow-400" /> Executive AI Coach
+                            </div>
+                            <CoachChat compact />
+                        </div>
                     </div>
 
                     {/* RIGHT: LEADERBOARD (4 cols) */}
