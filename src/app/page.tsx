@@ -164,8 +164,12 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="w-full flex flex-col gap-2 items-center justify-center font-work text-concrete-900/30 text-[10px] uppercase tracking-[0.2em] relative z-10 pb-8">
-        <span>DreamPoint Founders Circle</span>
+      <footer className="w-full flex flex-col gap-4 items-center justify-center font-work text-concrete-900/30 text-[10px] uppercase tracking-[0.2em] relative z-10 pb-8">
+        <div className="flex gap-6">
+          <a href="/legal" className="hover:text-concrete-900 transition-colors">Privacy & Terms</a>
+          <span>•</span>
+          <span>Dreampoint Founders Circle</span>
+        </div>
         <div className="w-12 h-[1px] bg-concrete-200" />
       </footer>
     </div>

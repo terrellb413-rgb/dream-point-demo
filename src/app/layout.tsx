@@ -24,10 +24,22 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   title: "DreamPoint | General Contractor for Your Dreams",
   description: "The future operating system for beauty founders. Secure your digital booth in the Dreampoint Mall.",
+  manifest: "/manifest.json",
+  icons: {
+    icon: "/favicon.ico",
+    apple: "/apple-icon.png",
+  },
   openGraph: {
     title: "DreamPoint",
     description: "Secure your digital booth in the Dreampoint Mall.",
+    url: "https://dreampoint.web",
+    siteName: "DreamPoint",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "DreamPoint",
+    description: "The future operating system for beauty founders. Secure your digital booth in the Dreampoint Mall.",
   },
 };
 

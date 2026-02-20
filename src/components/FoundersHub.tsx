@@ -77,6 +77,7 @@ export default function FoundersHub({
                                     <a
                                         href="https://www.tiktok.com/@dreampointapp?is_from_webapp=1&sender_device=pc"
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
                                     >
                                         TikTok
@@ -84,6 +85,7 @@ export default function FoundersHub({
                                     <a
                                         href="https://www.instagram.com/dreampointapp?igsh=NXZkemIxd2s2dzVk&utm_source=qr"
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
                                     >
                                         Instagram
@@ -91,6 +93,7 @@ export default function FoundersHub({
                                     <a
                                         href="https://youtube.com/@dreampointapp?si=Ey4Qd30AkqVnFb5G"
                                         target="_blank"
+                                        rel="noopener noreferrer"
                                         className="text-[10px] font-bold uppercase text-steel hover:text-blueprint transition-colors"
                                     >
                                         YouTube
